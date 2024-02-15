@@ -48,7 +48,7 @@ static int	in(char c, const char *str)
 	return (0);
 }
 
-static char	*extract_line(char **board)
+static char	*extract_line(char **board, int inc)
 {
 	char	cond;
 	char	*line;
@@ -57,7 +57,7 @@ static char	*extract_line(char **board)
 
 	cond = '\n';
 	line_len = ft_strclen(*board, cond) + 1;
-	line = ft_strndup(*board, line_len);
+	line = ft_strndup(*board, line_len - inc);
 	if (ft_strclen(*board, '\0') > line_len)
 	{
 		tmp = ft_strndup(*board + line_len, ft_strclen(*board, '\0'));
@@ -73,7 +73,7 @@ static char	*extract_line(char **board)
 	return (line);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int inc)
 {
 	char		*buff;
 	char		*tmp;
@@ -99,5 +99,5 @@ char	*get_next_line(int fd)
 		board[fd] = tmp;
 	}
 	clean_up(&buff, &buff);
-	return (extract_line(&board[fd]));
+	return (extract_line(&board[fd], inc));
 }

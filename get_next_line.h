@@ -26,7 +26,7 @@
 #  define MAX_FD 512
 # endif
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, int inc);
 char	*clean_up(char **str, char **str2);
 size_t	ft_strclen(const char *str, char cond);
 void	*ft_memset(void *ptr, int c, size_t len);
